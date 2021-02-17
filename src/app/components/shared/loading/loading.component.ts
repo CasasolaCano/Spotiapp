@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { faSync } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-loading',
@@ -6,11 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class LoadingComponent implements OnInit {
+export class LoadingComponent {
+
+  faSync = faSync
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
