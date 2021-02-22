@@ -13,6 +13,8 @@ import { logging } from 'protractor';
 export class ArtistComponent  {
 
   artist:any = {};
+  topTracks: any[] = [];
+
   loading : boolean;
 
   constructor(private router: ActivatedRoute, private spotify: SpotifyService) {
@@ -21,6 +23,7 @@ export class ArtistComponent  {
 
     this.router.params.subscribe(params => {
       this.getArtist(params['id']);
+      this.getTopTracks(params['id']);
     });
    }
 
@@ -32,6 +35,14 @@ export class ArtistComponent  {
       this.artist = artist;
       this.loading = false;
     });
+  }
+
+  getTopTracks(id: string) {
+
+    this.spotify.getTopTracks(id).subscribe(topTracks => {
+      console.log(topTracks);
+      this.topTracks = topTracks;
+    })
   }
 
 }
